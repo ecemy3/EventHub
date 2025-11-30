@@ -1,0 +1,74 @@
+﻿@model eventhub.Models.EventHubModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<div class="uk-grid" data-uk-grid>
+    <div class="uk-width">
+        <div class="widjet --profile">
+            <div class="widjet__head">
+                <h3 class="uk-text-lead">Profile</h3>
+            </div>
+            <div class="widjet__body">
+                <div class="user-info">
+                    <div class="user-info__avatar"><img src="~/assets/pImage/@Model.userDetail.ProfilePicture" alt="profile"></div>
+                    <div class="user-info__box">
+                        <div class="user-info__title">@Model.userDetail.FirstName @Model.userDetail.LastName</div>
+                        <div class="user-info__text">@Model.userDetail.Location, @Model.userDetail.BirthDate.ToShortDateString()</div>
+                    </div>
+                </div><a class="uk-button uk-button-danger" href="/Profile/Edit/"><i class="ico_edit"></i><span class="uk-margin-small-left">Edit Profile</span></a>
+            </div>
+        </div>
+        <div class="widjet --activity">
+            <div class="widjet__body">
+                <div class="widjet-game-info">
+                    <div class="widjet-game-info__title">Total Score</div>
+                    <div class="widjet-game-info__progress">
+                        <div class="my-game-item__letter" style="background: #4398E8;">@Model.userPoint</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (TempData["Message"] != null)
+    {
+        @Html.Raw(TempData["Message"])
+    }
+    <div class="uk-width-1-1">
+        <h3 class="uk-text-lead">Recommendation</h3>
+        <div class="js-popular">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+
+                    @foreach (var item in Model.eventList)
+                    {
+                        <div class="swiper-slide">
+                            <div class="game-card">
+                                <div class="game-card__box">
+                                    <div class="game-card__media"><a href="10_game-profile.html"><img src="~/assets/eBanner/@item.EventBanner" /></a></div>
+                                    <div class="game-card__info">
+                                        <a class="game-card__title" href="10_game-profile.html">@item.EventName</a>
+                                        <div class="stream-item__nicname"> @item.Date.ToShortDateString()</div>
+                                    </div>
+                                    @if (Model.isAlreadyInEvent(Model.userDetail.UserID, item.ID) == true)
+                                    {
+                                        <a href="/Event/EventCancel/@item.ID">Cancel</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/Event/EventAccept/@item.ID">Join</a>
+                                    }
+                                <a href="Maps/Index?city=@item.Location">Click for location information.</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+

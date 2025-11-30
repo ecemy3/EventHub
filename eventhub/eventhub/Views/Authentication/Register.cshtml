@@ -1,0 +1,200 @@
+﻿@model eventhub.Models.User 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EventHub - Your One-Stop Hub for Every Event!</title>
+    <meta content="Templines" name="author">
+    <meta content="TeamHost" name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <link rel="shortcut icon" href="~/assets/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/assets/css/libs.min.css">
+    <link rel="stylesheet" href="~/assets/css/main.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <style>
+        .image-preview {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px dashed #ddd;
+            padding: 10px;
+            max-width: 200px;
+            height: auto;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+
+            .image-preview img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 5px;
+            }
+    </style>
+</head>
+
+
+<body class="page-login">
+
+    <input id="toggle" type="checkbox">
+    <script type="text/javascript">document.getElementById("toggle").addEventListener("click", function () {
+            document.getElementsByTagName('body')[0].classList.toggle("dark-theme");
+        });</script>
+
+    <!-- Loader-->
+    <div id="page-preloader">
+        <div class="preloader-1">
+            <div class="loader-text">Loading</div>
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+            <span class="line line-3"></span>
+            <span class="line line-4"></span>
+            <span class="line line-5"></span>
+            <span class="line line-6"></span>
+            <span class="line line-7"></span>
+            <span class="line line-8"></span>
+            <span class="line line-9"></span>
+        </div>
+    </div>
+    <!-- Loader end-->
+
+    <div class="page-wrapper">
+        <main class="page-first-screen">
+            <div class="uk-grid uk-grid-small uk-child-width-1-2@s uk-flex-middle uk-width-1-1" data-uk-grid>
+                <div class="logo-big">
+                    <img src="~/assets/img/logo-big.png" alt="logo" class="animation-navspinv">
+                    <span>EventHub</span>
+                    <h1>Connect, Join, and Celebrate!</h1>
+                </div>
+                <div>
+                    <div class="form-login">
+                        <div class="form-login__social">
+                            <ul class="social">
+                                <li><a href="http://www.google.com"><img src="~/assets/img/google.svg" alt="google"></a></li>
+                            </ul>
+                        </div>
+                        <div class="form-login__box">
+                            <div class="uk-heading-line uk-text-center"><span>or with Email</span></div>
+                            @using (Html.BeginForm("Register", "Authentication", FormMethod.Post, new { enctype = "multipart/form-data", id = "productForm" }))
+                            {
+                                if (ViewBag.sonuc != null)
+                                {
+                                    if (ViewBag.sonuc == 1)
+                                    {
+                                        <div style='background-color: #28a745; color: white; padding: 10px; border-radius: 5px;'>The account has been created successfully.</div>
+                                        <meta http-equiv="refresh" content="3;url=/Authentication/Login/">
+                                    }
+                                    else if (ViewBag.sonuc == 2)
+                                    {
+                                        <div style='background-color: #f8d7da; color: #721c24; padding: 15px; margin: 20px 0; border: 1px solid #f5c6cb; border-radius: 5px; font-family: Arial, sans-serif; font-size: 16px;'>There is already a member with this username. Please choose a different username.</div>
+                                    }
+                                    else
+                                    {
+                                        <div style='background-color: #ff0000; color: white; padding: 10px; border-radius: 5px;'>Program error.</div>
+                                    }
+
+
+                                }
+                                <div class="uk-margin">
+                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "uk-input", @placeholder = "First Name", @required = "" })
+
+                                </div>
+                                <div class="uk-margin">
+                                    @Html.TextBoxFor(m => m.LastName, new { @class = "uk-input", @placeholder = "Last Name", @required = "" })
+                                </div>
+                                <div class="uk-margin">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "uk-input", @placeholder = "E-Mail", @required = "", @type = "email" })
+                                </div>
+                                <div class="uk-margin">
+                                    @Html.TextBoxFor(m => m.Username, new { @class = "uk-input", @placeholder = "User Name", @required = "" })
+                                </div>
+                                <div class="uk-margin">
+                                    @Html.TextBoxFor(m => m.Password, new { @class = "uk-input", @placeholder = "Password", @required = "", @type = "password" })
+                                </div>
+                                <div class="uk-margin">
+                                    @Html.TextBoxFor(m => m.BirthDate, new { @class = "uk-input", @placeholder = "Birth Day", @required = "", @type = "date" })
+                                </div>
+                                <div class="uk-margin">
+                                    <select class="uk-select" name="Gender" required>
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="uk-margin">
+                                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "uk-input", @placeholder = "Phone", @required = "" })
+                                </div>
+                                <div class="uk-margin">
+                                    @Html.DropDownListFor(m => m.Location, (List<SelectListItem>)ViewBag.iller, new { @class = "uk-input" })
+                                </div>
+                                <!-- Interests -->
+                                <div class="uk-margin">
+                                    <label class="uk-form-label">Interests:</label>
+                                    <div class="uk-form-controls" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                                        @{eventhub.Models.EventHubModel s = new eventhub.Models.EventHubModel();
+                                            List<eventhub.Models.EventCategory> liste = s.eventCategories();
+                                        }
+                                        @foreach (var item in liste)
+                                        {
+                                            <label><input type="checkbox" name="Interests" value="@item.EventCategoryName">@item.EventCategoryName</label>
+                                        }
+
+
+                                    </div>
+                                </div>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="file" name="ProfilePicture" />
+                                </div>
+
+                                <div class="uk-margin">
+                                    <button class="uk-button uk-button-danger uk-width-1-1" type="submit">Register</button>
+                                </div>
+                                <div class="uk-text-center">
+                                    <span>Already have an account?</span>
+                                    <a class="uk-margin-small-left" href="/Authentication/Login/">Log In</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>function previewImage(event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('PreviewImage');
+            const previewContainer = document.getElementById('ImagePreview');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                    previewContainer.style.border = "1px solid #ccc";
+                    previewContainer.style.padding = "5px";
+                    previewContainer.style.textAlign = "center";
+                    previewContainer.style.maxWidth = "200px";
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+                preview.style.display = "none";
+                previewContainer.style.border = "none";
+            }
+        }</script>
+
+    <script src="~/assets/js/libs.js"></script>
+    <script src="~/assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+﻿@model eventhub.Models.Event
+@{
+    ViewBag.Title = "EventAdd";
+    Layout = "~/Views/Shared/adminLayout.cshtml";
+    <style>
+
+
+        .form-container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555555;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="file"],
+        textarea,
+        button,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+            button:hover {
+                background: #45a049;
+            }
+
+        .file-label {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+}
+@if (ViewBag.sonuc != null)
+{
+    if (ViewBag.sonuc == 1)
+    {<label style="color: green; font-weight: bold; font-size: 16px;">The event was created successfully.</label>}
+}
+else if(ViewBag.sonuc==0)
+{
+<label style="color: darkred; font-weight: bold; font-size: 16px;">Hata</label>
+}
+<div class="form-container">
+    @using (Html.BeginForm("EventAdd", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <h2>Create Event</h2>
+        <label for="eventName">Event Name</label>
+        @Html.TextBoxFor(m => m.EventName)
+        <label for="eventDate">Description</label>
+        @Html.TextAreaFor(m => m.Description)
+        <label for="eventDescription">Date</label>
+        @Html.TextBoxFor(m => m.Date, new { @type = "date" })
+        <label for="eventDescription">Category</label>
+        @Html.DropDownListFor(m => m.EventCategoryID, (List<SelectListItem>)ViewBag.category)
+        <label for="eventDescription">Location</label>
+        @Html.DropDownListFor(m => m.Location, (List<SelectListItem>)ViewBag.iller)
+        <label for="eventImage">Event Banner</label>
+        <input type="file" id="eventImage" name="EventImage" accept="image/*">
+        <span class="file-label">Only accept img.</span>
+        <button type="submit">Save</button>
+    }
+</div>
+

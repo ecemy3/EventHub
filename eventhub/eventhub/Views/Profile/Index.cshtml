@@ -1,0 +1,125 @@
+﻿@model eventhub.Models.User
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+    <style>
+        .image-preview {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px dashed #ddd;
+            padding: 10px;
+            max-width: 200px;
+            height: auto;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+
+            .image-preview img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 5px;
+            }
+    </style>
+}
+
+<div class="uk-grid" data-uk-grid>
+    <div class="uk-width-2-3@l">
+        @using (Html.BeginForm("Index", "Profile", FormMethod.Post, new { enctype = "multipart/form-data", id = "productForm" }))
+        {
+            if (ViewBag.sonuc != null)
+            {
+                if (ViewBag.sonuc == 1)
+                {
+                    <div style='background-color: #28a745; color: white; padding: 10px; border-radius: 5px;'>The account has been updated successfully.</div>
+                }
+                else if (ViewBag.sonuc == 2)
+                {
+                    <div style='background-color: #f8d7da; color: #721c24; padding: 15px; margin: 20px 0; border: 1px solid #f5c6cb; border-radius: 5px; font-family: Arial, sans-serif; font-size: 16px;'>There is already a member with this username. Please choose a different username.</div>
+                }
+                else
+                {
+                    <div style='background-color: #ff0000; color: white; padding: 10px; border-radius: 5px;'>Program error.</div>
+                }
+
+
+            }
+            <h3 style="text-align:center">Edit Profile</h3>
+            <div class="uk-margin">
+                <label>First Name</label>
+                @Html.HiddenFor(m=>m.UserID)
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "uk-input", @placeholder = "First Name", @required = "", @disabled = "" })
+            </div>
+                <div class="uk-margin">
+                    <label>Last Name</label>
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "uk-input", @placeholder = "Last Name", @required = "", @disabled = "" })
+                </div>
+                <div class="uk-margin">
+                    <label>E-Mail</label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "uk-input", @placeholder = "E-Mail", @required = "", @type = "email", @disabled = "" })
+                </div>
+                <div class="uk-margin">
+                    <label>User Name</label>
+                    @Html.TextBoxFor(m => m.Username, new { @class = "uk-input", @placeholder = "User Name", @required = "", @disabled = "" })
+                </div>
+                <div class="uk-margin">
+                    <label>Password</label>
+                    @Html.TextBoxFor(m => m.Password, new { @class = "uk-input", @placeholder = "Password", @required = "", @type = "password",@value="" })
+                </div>
+                <div class="uk-margin">
+                    <label>Phone</label>
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "uk-input", @placeholder = "Phone", @required = "" })
+                </div>
+                <div class="uk-margin">
+                    <label>Location</label>
+                    @Html.DropDownListFor(m => m.Location, (List<SelectListItem>)ViewBag.iller, new { @class = "uk-input" })
+                </div>
+                <!-- Interests -->
+                <div class="uk-margin">
+                    <label class="uk-form-label">Interests:</label>
+                    <div class="uk-form-controls" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        @{eventhub.Models.EventHubModel s = new eventhub.Models.EventHubModel();
+                            List<eventhub.Models.EventCategory> liste = s.eventCategories();
+                            string[] list = Model.Interests.Split(',');
+                        }
+                        @foreach (var item in liste)
+                        {
+                            bool isChecked = false;
+
+                            foreach (var interest in list)
+                            {
+                                if (interest == item.EventCategoryName)
+                                {
+                                    isChecked = true;
+                                    break; // Eşleşme bulunduğunda döngüyü sonlandır
+                                }
+                            }
+
+                            <label>
+                                <input type="checkbox" name="Interests" value="@item.EventCategoryName" @(isChecked ? "checked" : "")>
+                                @item.EventCategoryName
+                            </label>
+                        }
+
+
+
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <input class="uk-input" type="file" name="ProfilePicture" />
+                </div>
+
+                <div class="uk-margin">
+                    <button class="uk-button uk-button-danger uk-width-1-1" type="submit">Register</button>
+                </div>
+                <div class="uk-text-center">
+                    <span>Already have an account?</span>
+                    <a class="uk-margin-small-left" href="/Authentication/Login/">Log In</a>
+                </div>
+                }
+            </div>
+        </div>
+

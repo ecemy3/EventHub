@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "EventHub | Event List Page";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+@model eventhub.Models.EventHubModel
+<h3 class="uk-text-lead">Current Event</h3>
+<div data-uk-filter="target: .js-filter">
+    <ul class="uk-subnav uk-subnav-pill">
+        <li class="uk-active" data-uk-filter-control><a href="#">All</a></li>
+        @foreach (var item in Model.eventCategoryList)
+        {
+            <li data-uk-filter-control="[data-type='@item.EventCategoryName']"><a href="#">@item.EventCategoryName</a></li>
+        }
+    </ul>
+    <ul class="js-filter uk-grid-small uk-child-width-1-1 uk-child-width-1-5@xl uk-child-width-1-4@l uk-child-width-1-3@m uk-child-width-1-2@s" data-uk-grid>
+        @foreach (var item in Model.eventList)
+        {
+            <li data-type="@item.EventCategory.EventCategoryName">
+                <div class="stream-item">
+                    <div class="stream-item__box">
+                        <div class="stream-item__media" data-uk-lightbox="video-autoplay: true">
+                            <img src="~/assets/eBanner/@item.EventBanner" height="250" width="250" alt="Call to Arms  Gates of Hel..." />
+                            <div class="stream-item__info">
+                                <div class="stream-item__status">Live</div>
+                            </div>
+                        </div>
+                        <div class="stream-item__body">
+                            <div class="stream-item__title">@item.EventName.</div>
+                            <div class="stream-item__nicname">@item.Description</div>
+                            <div class="stream-item__nicname"> @item.Date.ToShortDateString()</div>
+                        </div>
+                        @if (item.status == 0)
+                        {
+                            <a style="color:green;" href="/Event/EventUpdate/@item.ID">Edit</a>
+                            <br />
+                            <a style="color:darkred;" href="/Event/EventRemove/@item.ID">Remove</a>
+                            <br />
+                        }
+                    </div>
+                </div>
+            </li>
+
+        }
+    </ul>
+</div>
+<a href="/Event/EventAdd/" style="display: block; text-align: center; margin: 10px 0;">Add New Event</a>
+
+

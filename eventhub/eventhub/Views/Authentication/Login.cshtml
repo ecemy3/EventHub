@@ -1,0 +1,100 @@
+﻿@model eventhub.Models.User
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>EventHub - Your One-Stop Hub for Every Event!</title>
+    <meta content="Templines" name="author">
+    <meta content="TeamHost" name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <link rel="shortcut icon" href="~/assets/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/assets/css/libs.min.css">
+    <link rel="stylesheet" href="~/assets/css/main.css">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body class="page-login">
+
+    <input id="toggle" type="checkbox">
+    <script type="text/javascript">document.getElementById("toggle").addEventListener("click", function() {
+            document.getElementsByTagName('body')[0].classList.toggle("dark-theme");
+        });</script>
+
+    <!-- Loader-->
+    <div id="page-preloader">
+        <div class="preloader-1">
+            <div class="loader-text">Loading</div>
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+            <span class="line line-3"></span>
+            <span class="line line-4"></span>
+            <span class="line line-5"></span>
+            <span class="line line-6"></span>
+            <span class="line line-7"></span>
+            <span class="line line-8"></span>
+            <span class="line line-9"></span>
+        </div>
+
+    </div>
+    <!-- Loader end-->
+
+    <div class="page-wrapper">
+        <main class="page-first-screen">
+            <div class="uk-grid uk-grid-small uk-child-width-1-2@s uk-flex-middle uk-width-1-1" data-uk-grid>
+                <div class="logo-big">
+                    <img src="~/assets/img/logo-big.png" alt="logo" class="animation-navspinv">
+                    <span>EventHub</span>
+                    <h1>Your One-Stop Hub for Every Event!</h1>
+                </div>
+                <div>
+                    <div class="form-login">
+                        <div class="form-login__social">
+                            <ul class="social">
+                                <li><a href="http://www.google.com"><img src="~/assets/img/google.svg" alt="google"></a></li>
+                            </ul>
+                        </div>
+                        <div class="form-login__box">
+                            <div class="uk-heading-line uk-text-center"><span>or with Email</span></div>
+                            @using (Html.BeginForm("Login", "Authentication", FormMethod.Post))
+                            {
+                                if(ViewBag.sonuc!=null)
+                                { 
+                                @Html.Raw(ViewBag.sonuc)
+                                }
+                                <div class="uk-margin">
+                                    @Html.TextBoxFor(m => m.Username, new { @class = "uk-input", @required = "", @placeholder = "Please enter your username" })
+                                </div>
+                                <div class="uk-margin">
+                                    @Html.TextBoxFor(m => m.Password, new { @class = "uk-input", @required = "", @type = "password", @placeholder = "Please enter your password" })
+                                </div>
+                                <div class="uk-margin">
+                                    <button type="submit" class="uk-button uk-button-danger uk-width-1-1">Login</button>
+                                </div>
+                                <div class="uk-margin uk-text-center">
+                                    <a href="#">Forgotten password?</a>
+                                </div>
+                                <hr>
+                                <div class="uk-text-center">
+                                    <span>Don’t have an account?</span>
+                                    <a class="uk-margin-small-left" href="/Authentication/Register/">Register</a>
+                                </div>
+                            }
+
+                        </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="~/assets/js/libs.js"></script>
+    <script src="~/assets/js/main.js"></script>
+</body>
+
+</html>

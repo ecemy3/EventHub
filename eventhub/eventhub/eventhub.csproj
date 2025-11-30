@@ -1,0 +1,464 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A8D1340D-B6D8-419D-832B-B8D3FE392248}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>eventhub</RootNamespace>
+    <AssemblyName>eventhub</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44323</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\libs.min.css" />
+    <Content Include="assets\css\main.css" />
+    <Content Include="assets\css\showcase.css" />
+    <Content Include="assets\css\youzify.min.css" />
+    <Content Include="assets\fonts\icons.svg" />
+    <Content Include="assets\img\acheivement-1.png" />
+    <Content Include="assets\img\acheivement-2.png" />
+    <Content Include="assets\img\acheivement-3.png" />
+    <Content Include="assets\img\acheivement-4.png" />
+    <Content Include="assets\img\acheivement-5.png" />
+    <Content Include="assets\img\activity-1.jpg" />
+    <Content Include="assets\img\activity-2.jpg" />
+    <Content Include="assets\img\Badge 1.png" />
+    <Content Include="assets\img\Badge 2.png" />
+    <Content Include="assets\img\Badge 3.png" />
+    <Content Include="assets\img\badge-1.png" />
+    <Content Include="assets\img\badge-2.png" />
+    <Content Include="assets\img\badge-3.png" />
+    <Content Include="assets\img\bg-first-screen.jpg" />
+    <Content Include="assets\img\c0.jpg" />
+    <Content Include="assets\img\c0jpg.jpg" />
+    <Content Include="assets\img\c1.jpeg" />
+    <Content Include="assets\img\c1.jpg" />
+    <Content Include="assets\img\c2.jpeg" />
+    <Content Include="assets\img\c3.jpeg" />
+    <Content Include="assets\img\c4.jpeg" />
+    <Content Include="assets\img\edit.svg" />
+    <Content Include="assets\img\facebook.svg" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\g1.jpg" />
+    <Content Include="assets\img\g2.jpg" />
+    <Content Include="assets\img\g3.jpg" />
+    <Content Include="assets\img\g4.jpg" />
+    <Content Include="assets\img\game-1.jpg" />
+    <Content Include="assets\img\game-1.png" />
+    <Content Include="assets\img\game-10.jpg" />
+    <Content Include="assets\img\game-11.jpg" />
+    <Content Include="assets\img\game-12.jpg" />
+    <Content Include="assets\img\game-2.jpg" />
+    <Content Include="assets\img\game-2.png" />
+    <Content Include="assets\img\game-3.jpg" />
+    <Content Include="assets\img\game-4.jpg" />
+    <Content Include="assets\img\game-5.jpg" />
+    <Content Include="assets\img\game-6.jpg" />
+    <Content Include="assets\img\game-7.jpg" />
+    <Content Include="assets\img\game-8.jpg" />
+    <Content Include="assets\img\game-9.jpg" />
+    <Content Include="assets\img\game-profile-card.jpg" />
+    <Content Include="assets\img\google.svg" />
+    <Content Include="assets\img\icons\about-1.png" />
+    <Content Include="assets\img\icons\about-1.svg" />
+    <Content Include="assets\img\icons\about-2.png" />
+    <Content Include="assets\img\icons\about-2.svg" />
+    <Content Include="assets\img\icons\about-3.png" />
+    <Content Include="assets\img\icons\about-3.svg" />
+    <Content Include="assets\img\icons\about-4.png" />
+    <Content Include="assets\img\icons\about-4.svg" />
+    <Content Include="assets\img\icons\about-5.png" />
+    <Content Include="assets\img\icons\about-5.svg" />
+    <Content Include="assets\img\icons\about-6.png" />
+    <Content Include="assets\img\icons\about-6.svg" />
+    <Content Include="assets\img\icons\about-7.png" />
+    <Content Include="assets\img\icons\about-7.svg" />
+    <Content Include="assets\img\icons\author.png" />
+    <Content Include="assets\img\icons\author.svg" />
+    <Content Include="assets\img\icons\calendar.png" />
+    <Content Include="assets\img\icons\calendar.svg" />
+    <Content Include="assets\img\icons\category-1.svg" />
+    <Content Include="assets\img\icons\category-2.svg" />
+    <Content Include="assets\img\icons\category-3.svg" />
+    <Content Include="assets\img\icons\category-4.svg" />
+    <Content Include="assets\img\icons\category-5.svg" />
+    <Content Include="assets\img\icons\category.png" />
+    <Content Include="assets\img\icons\category.svg" />
+    <Content Include="assets\img\icons\check.png" />
+    <Content Include="assets\img\icons\check.svg" />
+    <Content Include="assets\img\icons\comment.png" />
+    <Content Include="assets\img\icons\comment.svg" />
+    <Content Include="assets\img\icons\contact-icon-1.png" />
+    <Content Include="assets\img\icons\contact-icon-1.svg" />
+    <Content Include="assets\img\icons\contact-icon-2.png" />
+    <Content Include="assets\img\icons\contact-icon-2.svg" />
+    <Content Include="assets\img\icons\contact-icon-3.png" />
+    <Content Include="assets\img\icons\contact-icon-3.svg" />
+    <Content Include="assets\img\icons\contact-icon-4.png" />
+    <Content Include="assets\img\icons\contact-icon-4.svg" />
+    <Content Include="assets\img\icons\grid.png" />
+    <Content Include="assets\img\icons\grid.svg" />
+    <Content Include="assets\img\icons\info-1.png" />
+    <Content Include="assets\img\icons\info-1.svg" />
+    <Content Include="assets\img\icons\info-2.png" />
+    <Content Include="assets\img\icons\info-2.svg" />
+    <Content Include="assets\img\icons\info-3.png" />
+    <Content Include="assets\img\icons\info-3.svg" />
+    <Content Include="assets\img\icons\info-4.png" />
+    <Content Include="assets\img\icons\info-4.svg" />
+    <Content Include="assets\img\icons\info-5.png" />
+    <Content Include="assets\img\icons\info-5.svg" />
+    <Content Include="assets\img\icons\info-6.png" />
+    <Content Include="assets\img\icons\info-6.svg" />
+    <Content Include="assets\img\icons\list-info-1.png" />
+    <Content Include="assets\img\icons\list-info-1.svg" />
+    <Content Include="assets\img\icons\list-info-2.png" />
+    <Content Include="assets\img\icons\list-info-2.svg" />
+    <Content Include="assets\img\icons\list-info-3.png" />
+    <Content Include="assets\img\icons\list-info-3.svg" />
+    <Content Include="assets\img\icons\list-info-4.png" />
+    <Content Include="assets\img\icons\list-info-4.svg" />
+    <Content Include="assets\img\icons\list-info-5.png" />
+    <Content Include="assets\img\icons\list-info-5.svg" />
+    <Content Include="assets\img\icons\list.png" />
+    <Content Include="assets\img\icons\list.svg" />
+    <Content Include="assets\img\icons\menu.png" />
+    <Content Include="assets\img\icons\menu.svg" />
+    <Content Include="assets\img\icons\phone.png" />
+    <Content Include="assets\img\icons\phone.svg" />
+    <Content Include="assets\img\icons\play-white.png" />
+    <Content Include="assets\img\icons\play-white.svg" />
+    <Content Include="assets\img\icons\play.png" />
+    <Content Include="assets\img\icons\play.svg" />
+    <Content Include="assets\img\icons\quotes.png" />
+    <Content Include="assets\img\icons\quotes.svg" />
+    <Content Include="assets\img\icons\range-slider.svg" />
+    <Content Include="assets\img\icons\share.png" />
+    <Content Include="assets\img\icons\share.svg" />
+    <Content Include="assets\img\icons\smartphone.png" />
+    <Content Include="assets\img\icons\smartphone.svg" />
+    <Content Include="assets\img\icons\specifications-1.png" />
+    <Content Include="assets\img\icons\specifications-1.svg" />
+    <Content Include="assets\img\icons\specifications-10.png" />
+    <Content Include="assets\img\icons\specifications-11.png" />
+    <Content Include="assets\img\icons\specifications-12.png" />
+    <Content Include="assets\img\icons\specifications-13.png" />
+    <Content Include="assets\img\icons\specifications-2.png" />
+    <Content Include="assets\img\icons\specifications-2.svg" />
+    <Content Include="assets\img\icons\specifications-3.png" />
+    <Content Include="assets\img\icons\specifications-3.svg" />
+    <Content Include="assets\img\icons\specifications-4.png" />
+    <Content Include="assets\img\icons\specifications-4.svg" />
+    <Content Include="assets\img\icons\specifications-5.png" />
+    <Content Include="assets\img\icons\specifications-5.svg" />
+    <Content Include="assets\img\icons\specifications-6.png" />
+    <Content Include="assets\img\icons\specifications-6.svg" />
+    <Content Include="assets\img\icons\specifications-7.png" />
+    <Content Include="assets\img\icons\specifications-8.png" />
+    <Content Include="assets\img\icons\specifications-9.png" />
+    <Content Include="assets\img\logo-big.png" />
+    <Content Include="assets\img\logo-big.svg" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\logo.svg" />
+    <Content Include="assets\img\mac.png" />
+    <Content Include="assets\img\market-item-1.jpg" />
+    <Content Include="assets\img\market-item-2.jpg" />
+    <Content Include="assets\img\market-item-3.jpg" />
+    <Content Include="assets\img\market-item-4.jpg" />
+    <Content Include="assets\img\payment-card-chip.svg" />
+    <Content Include="assets\img\payment-card-logo.svg" />
+    <Content Include="assets\img\post1-1170x558.jpeg" />
+    <Content Include="assets\img\post2-1-1170x558.jpeg" />
+    <Content Include="assets\img\post3-1-1170x558.jpeg" />
+    <Content Include="assets\img\profile.png" />
+    <Content Include="assets\img\recommend-slide-img.png" />
+    <Content Include="assets\img\recommend-slide-logo.png" />
+    <Content Include="assets\img\streem-item-1.jpg" />
+    <Content Include="assets\img\streem-item-10.jpg" />
+    <Content Include="assets\img\streem-item-11.jpg" />
+    <Content Include="assets\img\streem-item-12.jpg" />
+    <Content Include="assets\img\streem-item-2.jpg" />
+    <Content Include="assets\img\streem-item-3.jpg" />
+    <Content Include="assets\img\streem-item-4.jpg" />
+    <Content Include="assets\img\streem-item-5.jpg" />
+    <Content Include="assets\img\streem-item-6.jpg" />
+    <Content Include="assets\img\streem-item-7.jpg" />
+    <Content Include="assets\img\streem-item-8.jpg" />
+    <Content Include="assets\img\streem-item-9.jpg" />
+    <Content Include="assets\img\svgico\add-square.svg" />
+    <Content Include="assets\img\svgico\apple.svg" />
+    <Content Include="assets\img\svgico\arrow-circle-left.svg" />
+    <Content Include="assets\img\svgico\arrow-circle-right.svg" />
+    <Content Include="assets\img\svgico\attach-circle.svg" />
+    <Content Include="assets\img\svgico\call.svg" />
+    <Content Include="assets\img\svgico\chats.svg" />
+    <Content Include="assets\img\svgico\clipboard-text.svg" />
+    <Content Include="assets\img\svgico\close-circle.svg" />
+    <Content Include="assets\img\svgico\community.svg" />
+    <Content Include="assets\img\svgico\edit.svg" />
+    <Content Include="assets\img\svgico\emoji-happy.svg" />
+    <Content Include="assets\img\svgico\eye.svg" />
+    <Content Include="assets\img\svgico\favourites.svg" />
+    <Content Include="assets\img\svgico\friends.svg" />
+    <Content Include="assets\img\svgico\gallery.svg" />
+    <Content Include="assets\img\svgico\help.svg" />
+    <Content Include="assets\img\svgico\home.svg" />
+    <Content Include="assets\img\svgico\info-circle.svg" />
+    <Content Include="assets\img\svgico\market.svg" />
+    <Content Include="assets\img\svgico\menu.svg" />
+    <Content Include="assets\img\svgico\message.svg" />
+    <Content Include="assets\img\svgico\microphone.svg" />
+    <Content Include="assets\img\svgico\more.svg" />
+    <Content Include="assets\img\svgico\notification.svg" />
+    <Content Include="assets\img\svgico\play-circle.svg" />
+    <Content Include="assets\img\svgico\profile.svg" />
+    <Content Include="assets\img\svgico\report.svg" />
+    <Content Include="assets\img\svgico\search.svg" />
+    <Content Include="assets\img\svgico\shopping-cart.svg" />
+    <Content Include="assets\img\svgico\star.svg" />
+    <Content Include="assets\img\svgico\store.svg" />
+    <Content Include="assets\img\svgico\streams.svg" />
+    <Content Include="assets\img\svgico\tick-circle.svg" />
+    <Content Include="assets\img\svgico\trash.svg" />
+    <Content Include="assets\img\svgico\video-circle.svg" />
+    <Content Include="assets\img\svgico\wallet.svg" />
+    <Content Include="assets\img\svgico\windows.svg" />
+    <Content Include="assets\img\t1.jpg" />
+    <Content Include="assets\img\t2.jpg" />
+    <Content Include="assets\img\t3.jpg" />
+    <Content Include="assets\img\tour1.jpg" />
+    <Content Include="assets\img\tournament1.jpg" />
+    <Content Include="assets\img\trending.jpg" />
+    <Content Include="assets\img\trending2.jpg" />
+    <Content Include="assets\img\trending3.jpg" />
+    <Content Include="assets\img\twitter.svg" />
+    <Content Include="assets\img\user-1.png" />
+    <Content Include="assets\img\user-1.png-.png" />
+    <Content Include="assets\img\user-2.png" />
+    <Content Include="assets\img\user-3.png" />
+    <Content Include="assets\img\user-4.png" />
+    <Content Include="assets\img\user-5.png" />
+    <Content Include="assets\img\user-list-1.png" />
+    <Content Include="assets\img\user-list-10.png" />
+    <Content Include="assets\img\user-list-11.png" />
+    <Content Include="assets\img\user-list-12.png" />
+    <Content Include="assets\img\user-list-2.png" />
+    <Content Include="assets\img\user-list-3.png" />
+    <Content Include="assets\img\user-list-4.png" />
+    <Content Include="assets\img\user-list-5.png" />
+    <Content Include="assets\img\user-list-6.png" />
+    <Content Include="assets\img\user-list-7.png" />
+    <Content Include="assets\img\user-list-8.png" />
+    <Content Include="assets\img\user-list-9.png" />
+    <Content Include="assets\js\libs.js" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\pImage\29-11-2024-17-08-25.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MapsController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\EventCategory.cs" />
+    <Compile Include="Models\EventHubModel.cs" />
+    <Compile Include="Models\EventMember.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\MessageDetail.cs" />
+    <Compile Include="Models\Score.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="assets\.DS_Store" />
+    <Content Include="assets\css\maps\main.css.map" />
+    <Content Include="assets\fonts\icons.eot" />
+    <Content Include="assets\fonts\icons.ttf" />
+    <Content Include="assets\fonts\icons.woff" />
+    <Content Include="assets\fonts\icons.woff2" />
+    <Content Include="assets\fonts\SegoeUI-Bold.woff" />
+    <Content Include="assets\fonts\SegoeUI-Bold.woff2" />
+    <Content Include="assets\fonts\SegoeUI-BoldItalic.woff" />
+    <Content Include="assets\fonts\SegoeUI-BoldItalic.woff2" />
+    <Content Include="assets\fonts\SegoeUI-Italic.woff" />
+    <Content Include="assets\fonts\SegoeUI-Italic.woff2" />
+    <Content Include="assets\fonts\SegoeUI-Light.woff" />
+    <Content Include="assets\fonts\SegoeUI-Light.woff2" />
+    <Content Include="assets\fonts\SegoeUI-SemiBold.woff" />
+    <Content Include="assets\fonts\SegoeUI-SemiBold.woff2" />
+    <Content Include="assets\fonts\SegoeUI.woff" />
+    <Content Include="assets\fonts\SegoeUI.woff2" />
+    <Content Include="assets\img\.DS_Store" />
+    <Content Include="assets\img\logo-big" />
+    <Content Include="assets\iller.json" />
+    <None Include="packages.config" />
+    <Content Include="Views\Authentication\Register.cshtml" />
+    <Content Include="Views\Authentication\Login.cshtml" />
+    <Content Include="Views\Shared\_SiteLayout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Shared\adminLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\EventList.cshtml" />
+    <Content Include="Views\Admin\EventAdd.cshtml" />
+    <Content Include="Views\Admin\EventUpdate.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Event\EventAdd.cshtml" />
+    <Content Include="Views\Event\EventUpdate.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\EventMessage.cshtml" />
+    <Content Include="Views\Maps\Index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="assets\eBanner\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51669</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44323/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
