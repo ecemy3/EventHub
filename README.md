@@ -1,110 +1,106 @@
-# EventHub 🎉
+ventHub 🎉
 
-ASP.NET MVC ile geliştirilmiş modern bir etkinlik yönetim platformu.
+A modern event management platform developed with ASP.NET MVC.
 
-## 📋 Özellikler
+Features
 
-- **Kullanıcı Yönetimi**: Kayıt, giriş ve profil yönetimi
-- **Etkinlik Oluşturma**: Kullanıcılar kendi etkinliklerini oluşturabilir
-- **Etkinlik Kategorileri**: Farklı kategorilerde etkinlik düzenleme
-- **Etkinlik Katılımı**: Etkinliklere katılma ve üye yönetimi
-- **Mesajlaşma Sistemi**: Kullanıcılar arası mesajlaşma
-- **Harita Entegrasyonu**: Etkinlik lokasyonlarını haritada görüntüleme
-- **Admin Paneli**: Yönetici kontrol paneli
-- **Puan Sistemi**: Kullanıcı puanlama sistemi
+User Management: Registration, login, and profile management
 
-## 🛠️ Teknolojiler
+Event Creation: Users can create their own events
 
-- **Framework**: ASP.NET MVC 5
-- **ORM**: Entity Framework 6.5
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Veritaşbanı**: SQL Server
-- **Paket Yönetimi**: NuGet
+Event Categories: Organize events under different categories
 
-## 📦 Kurulum
+Event Participation: Join events and manage participants
 
-### Gereksinimler
+Messaging System: User-to-user messaging
 
-- Visual Studio 2017 veya üzeri
-- .NET Framework 4.7.2+
-- SQL Server 2014 veya üzeri
-- IIS Express (Visual Studio ile birlikte gelir)
+Map Integration: Display event locations on a map
 
-### Adımlar
+Admin Panel: Administrator control dashboard
 
-1. Projeyi klonlayın:
-```bash
-git clone https://github.com/ecemy3/EventHub.git
-cd EventHub
-```
+Scoring System: User rating functionality
 
-2. Visual Studio ile `eventhub.sln` dosyasını açın
+Technologies
 
-3. NuGet paketlerini geri yükleyin:
-   - Solution Explorer'da solution'a sağ tıklayın
-   - "Restore NuGet Packages" seçeneğini seçin
+Framework: ASP.NET MVC 5
 
-4. Veritabanı bağlantı ayarlarını yapılandırın:
-   - `Web.config` dosyasında connection string'i düzenleyin
-   - SQL Server bağlantı bilgilerinizi girin
+ORM: Entity Framework 6.5
 
-5. Package Manager Console'dan migration'ları çalıştırın:
-```
-Update-Database
-```
+Frontend: HTML5, CSS3, JavaScript
 
-6. Projeyi çalıştırın (F5)
+Database: SQL Server
 
-## 📁 Proje Yapısı
+Package Management: NuGet
 
-```
-eventhub/
-├── Controllers/        # MVC Controller'ları
-├── Models/            # Veritabanı modelleri
-├── Views/             # Razor görünümleri
-├── assets/            # CSS, JS, resimler
-├── Migrations/        # Entity Framework migration'ları
-└── App_Start/         # Uygulama başlangıç yapılandırması
-```
+Installation
 
-## 🔑 Temel Controller'lar
+Requirements:
 
-- **HomeController**: Ana sayfa ve genel sayfalar
-- **AuthenticationController**: Kullanıcı girişi ve kaydı
-- **EventController**: Etkinlik işlemleri
-- **ProfileController**: Kullanıcı profili yönetimi
-- **MessageController**: Mesajlaşma sistemi
-- **AdminController**: Yönetici paneli
-- **MapsController**: Harita işlemleri
+Visual Studio 2017 or later
 
-## 💾 Veritabanı Modelleri
+.NET Framework 4.7.2+
 
-- **User**: Kullanıcı bilgileri
-- **Event**: Etkinlik bilgileri
-- **EventCategory**: Etkinlik kategorileri
-- **EventMember**: Etkinlik katılımcıları
-- **Message**: Mesaj sistemi
-- **MessageDetail**: Mesaj detayları
-- **Score**: Puan sistemi
+SQL Server 2014 or later
 
-## 🚀 Kullanım
+IIS Express
 
-1. Uygulamayı başlatın
-2. Ana sayfadan kayıt olun veya giriş yapın
-3. Etkinliklere göz atın veya yeni etkinlik oluşturun
-4. Etkinliklere katılın ve diğer kullanıcılarla mesajlaşın
+Installation Steps:
 
-## 🤝 Katkıda Bulunma
+Clone the project: git clone https://github.com/ecemy3/EventHub.git
 
-1. Fork yapın
-2. Feature branch oluşturun (`git checkout -b feature/yeniOzellik`)
-3. Değişikliklerinizi commit edin (`git commit -am 'Yeni özellik eklendi'`)
-4. Branch'inizi push edin (`git push origin feature/yeniOzellik`)
-5. Pull Request oluşturun
+Open eventhub.sln in Visual Studio
 
-## 📝 Lisans
+Restore NuGet packages (Solution → Restore NuGet Packages)
 
-Bu proje eğitim amaçlı geliştirilmiştir.
+Configure the database connection in Web.config
 
----
-⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın!
+Apply migrations using: Update-Database
+
+Run the project (F5)
+
+Project Structure
+
+Controllers (MVC controllers)
+Models (Database models)
+Views (Razor views)
+Assets (CSS, JS, images)
+Migrations (Entity Framework migrations)
+App_Start (Application startup configuration)
+
+Core Controllers
+
+HomeController – Homepage and general pages
+AuthenticationController – Login & registration
+EventController – Event creation and management
+ProfileController – User profile
+MessageController – Messaging
+AdminController – Admin dashboard
+MapsController – Map functionalities
+
+Database Models
+
+User
+Event
+EventCategory
+EventMember
+Message
+MessageDetail
+Score
+
+Usage
+
+Start the application
+
+Register or log in
+
+Browse or create events
+
+Join events and message other users
+
+Contributing
+
+Fork → Create feature branch → Commit → Push → Open Pull Request
+
+License
+
+This project was created for educational purposes.
